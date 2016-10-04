@@ -8,7 +8,7 @@ import com.onlyapps.study.rxandroid.R;
 
 import rx.Observable;
 
-public class SimpleMapLambdaActivity extends AppCompatActivity {
+public class SimpleMapLambdaActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

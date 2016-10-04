@@ -11,8 +11,7 @@ import rx.Observable;
 import rx.functions.Action0;
 import rx.functions.Action1;
 
-public class SimpleSubscriberActivity extends AppCompatActivity {
-    private static final String TAG = SimpleSubscriberActivity.class.getName();
+public class SimpleSubscriberActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +38,7 @@ public class SimpleSubscriberActivity extends AppCompatActivity {
                 .subscribe(new Action1<String>() {
                     @Override
                     public void call(String text) {
-                        Log.d(TAG, "Action1(UP) call : " + text);
+                        Log.d(TAG, "call() : " + text);
                         ((TextView) findViewById(R.id.textView)).setText(text);
                     }
                 });
@@ -47,23 +46,34 @@ public class SimpleSubscriberActivity extends AppCompatActivity {
         // Action1과 Action0을 예외와 성공 처리에도 사용할 수 있다.
         // subscrbe는 파라미터 2개 (+예외), 3개(+예외, 성공)를 받는다.
 
+//        simpleObservable
+//                .subscribe(new Action1<String>() {
+//                    @Override
+//                    public void call(String text) {
+//                        Log.d(TAG, "Action1(DOWN) call : " + text);
+//                        ((TextView) findViewById(R.id.textView)).setText(text);
+//                    }
+//                }, new Action1<Throwable>() {
+//                    @Override
+//                    public void call(Throwable throwable) {
+//                        Log.e(TAG, "Action1() call throwable : " + throwable);
+//                    }
+//                }, new Action0() {
+//                    @Override
+//                    public void call() {
+//                        Log.d(TAG, "Action0() call()");
+//                    }
+//                });
+
+
         simpleObservable
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String text) {
-                        Log.d(TAG, "Action1(DOWN) call : " + text);
-                        ((TextView) findViewById(R.id.textView)).setText(text);
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        Log.e(TAG, "Action1() call throwable : " + throwable);
-                    }
-                }, new Action0() {
-                    @Override
-                    public void call() {
-                        Log.d(TAG, "Action0() call()");
-                    }
+                .subscribe(text -> {
+                    Log.d(TAG, "onNext() : " + text);
+                    ((TextView) findViewById(R.id.textView)).setText(text);
+                }, throwable -> {
+                    Log.e(TAG, "onError() : " + throwable);
+                }, () -> {
+                    Log.d(TAG, "onComplete()");
                 });
     }
 

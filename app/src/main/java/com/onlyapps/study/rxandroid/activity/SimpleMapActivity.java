@@ -11,8 +11,7 @@ import rx.Observable;
 import rx.functions.Action1;
 import rx.functions.Func1;
 
-public class SimpleMapActivity extends AppCompatActivity {
-    private static final String TAG = SimpleMapActivity.class.getName();
+public class SimpleMapActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,20 +23,30 @@ public class SimpleMapActivity extends AppCompatActivity {
 
         // map을 통해 스트림에 있는 "Hello RxAndroid"를 대문자로 변환하는 과정을 추가한다.
         simpleObservable
-                .map(new Func1<String, String>() {
-                    @Override
-                    public String call(String text) {
-                        Log.d(TAG, "Func1 call(1) text : " + text);
-                        return text.toUpperCase();
-                    }
+                .map(text -> {
+                    Log.d(TAG, "Func1 call(1) text : " + text);
+                    return text.toUpperCase();
                 })
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String text) {
-                        Log.d(TAG, "Action1 call(1) text : " + text);
-                        ((TextView) findViewById(R.id.textView)).setText(text);
-                    }
+                // 위와 같은 소스
+//                .map(new Func1<String, String>() {
+//                    @Override
+//                    public String call(String text) {
+//                        Log.d(TAG, "Func1 call(1) text : " + text);
+//                        return text.toUpperCase();
+//                    }
+//                })
+                .subscribe(text -> {
+                    Log.d(TAG, "Action1 call(1) text : " + text);
+                    ((TextView) findViewById(R.id.textView)).setText(text);
                 });
+                // 위와 같은 소스
+//                .subscribe(new Action1<String>() {
+//                    @Override
+//                    public void call(String text) {
+//                        Log.d(TAG, "Action1 call(1) text : " + text);
+//                        ((TextView) findViewById(R.id.textView)).setText(text);
+//                    }
+//                });
 
         // 다른 타입으로도 가공할 수 있다.
 //        simpleObservable

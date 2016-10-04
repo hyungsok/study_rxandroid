@@ -22,6 +22,9 @@ import com.onlyapps.study.rxandroid.activity.SimpleMapActivity;
 import com.onlyapps.study.rxandroid.activity.SimpleObservableActivity;
 import com.onlyapps.study.rxandroid.activity.SimpleSubscriberActivity;
 
+/**
+ * 참고링크 : https://realm.io/kr/news/rxandroid/
+ */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
 
@@ -35,12 +38,10 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
+        fab.setOnClickListener(view -> {
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -58,10 +59,10 @@ public class MainActivity extends AppCompatActivity
     private void initMenu() {
         mListView = (ListView) findViewById(R.id.list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-        adapter.add("01. SimpleObservable");
-        adapter.add("02. SimpleSubscriber");
-        adapter.add("03. SimpleMap");
-        adapter.add("04. SimpleMap -> Java8Lambda");
+        adapter.add("01. SimpleObservableActivity");
+        adapter.add("02. SimpleSubscriberActivity");
+        adapter.add("03. SimpleMapActivity");
+        adapter.add("04. SimpleMapLambdaActivity");
         mListView.setAdapter(adapter);
         mListView.setOnItemClickListener(this);
         mListView.setSelection(adapter.getCount() - 1);

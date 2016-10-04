@@ -10,8 +10,7 @@ import com.onlyapps.study.rxandroid.R;
 import rx.Observable;
 import rx.Subscriber;
 
-public class SimpleObservableActivity extends AppCompatActivity {
-    private static final String TAG = SimpleObservableActivity.class.getName();
+public class SimpleObservableActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
