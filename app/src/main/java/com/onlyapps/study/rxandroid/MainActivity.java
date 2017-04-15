@@ -17,13 +17,20 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.onlyapps.study.rxandroid.activity.SimpleMapLambdaActivity;
-import com.onlyapps.study.rxandroid.activity.SimpleMapActivity;
-import com.onlyapps.study.rxandroid.activity.SimpleObservableActivity;
-import com.onlyapps.study.rxandroid.activity.SimpleSubscriberActivity;
+import com.onlyapps.study.rxandroid.activity.rxview.RxAsynDeferActivity;
+import com.onlyapps.study.rxandroid.activity.rxview.RxRarallelizationActivity;
+import com.onlyapps.study.rxandroid.activity.rxview.RxViewMapActivity;
+import com.onlyapps.study.rxandroid.activity.rxview.RxViewMergeActivity;
+import com.onlyapps.study.rxandroid.activity.rxview.RxViewMergeScanActivity;
+import com.onlyapps.study.rxandroid.activity.simple.SimpleMapLambdaActivity;
+import com.onlyapps.study.rxandroid.activity.simple.SimpleMapActivity;
+import com.onlyapps.study.rxandroid.activity.simple.SimpleObservableActivity;
+import com.onlyapps.study.rxandroid.activity.simple.SimpleSubscriberActivity;
 
 /**
- * 참고링크 : https://realm.io/kr/news/rxandroid/
+ * 참고링크
+ *  - https://realm.io/kr/news/rxandroid/
+ *  - https://medium.com/rainist-engineering/migrate-from-rxjava1-to-rxjava2-3aea3ff9051c
  */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
@@ -63,6 +70,11 @@ public class MainActivity extends AppCompatActivity
         adapter.add("02. SimpleSubscriberActivity");
         adapter.add("03. SimpleMapActivity");
         adapter.add("04. SimpleMapLambdaActivity");
+        adapter.add("05. RxViewMapActivity");
+        adapter.add("06. RxViewMergeActivity");
+        adapter.add("07. RxViewMergeScanActivity");
+        adapter.add("08. RxRarallelizationActivity");
+        adapter.add("09. RxAsynDeferActivity");
         mListView.setAdapter(adapter);
         mListView.setOnItemClickListener(this);
         mListView.setSelection(adapter.getCount() - 1);
@@ -82,6 +94,21 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 3:
                 startActivity(new Intent(this, SimpleMapLambdaActivity.class));
+                break;
+            case 4:
+                startActivity(new Intent(this, RxViewMapActivity.class));
+                break;
+            case 5:
+                startActivity(new Intent(this, RxViewMergeActivity.class));
+                break;
+            case 6:
+                startActivity(new Intent(this, RxViewMergeScanActivity.class));
+                break;
+            case 7:
+                startActivity(new Intent(this, RxRarallelizationActivity.class));
+                break;
+            case 8:
+                startActivity(new Intent(this, RxAsynDeferActivity.class));
                 break;
         }
     }

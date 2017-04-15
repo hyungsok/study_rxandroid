@@ -18,20 +18,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".activity.SimpleObservableActivity"
+            android:name=".activity.simple.SimpleObservableActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.SimpleSubscriberActivity"
+            android:name=".activity.simple.SimpleSubscriberActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".activity.SimpleMapActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".activity.SimpleMapLambdaActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+        <activity
+            android:name=".activity.simple.SimpleMapActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.simple.SimpleMapLambdaActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.rxview.RxViewMapActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.rxview.RxViewMergeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.rxview.RxViewMergeScanActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.rxview.RxRarallelizationActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.rxview.RxAsynDeferActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

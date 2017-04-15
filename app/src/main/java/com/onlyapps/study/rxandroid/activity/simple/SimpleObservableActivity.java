@@ -1,21 +1,20 @@
-package com.onlyapps.study.rxandroid.activity;
+package com.onlyapps.study.rxandroid.activity.simple;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
 import com.onlyapps.study.rxandroid.R;
+import com.onlyapps.study.rxandroid.activity.BaseSimpleActivity;
 
 import rx.Observable;
 import rx.Subscriber;
 
-public class SimpleObservableActivity extends BaseActivity {
+public class SimpleObservableActivity extends BaseSimpleActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_simple_textview);
 
         // 스트림을 생성.
         // onNext - 스트림에 데이터 보내기. 여러번 가능.
@@ -23,12 +22,9 @@ public class SimpleObservableActivity extends BaseActivity {
         // onError - 에러를 스트림에 전달.
 
         Observable<String> simpleObservable =
-                Observable.create(new Observable.OnSubscribe<String>() {
-                    @Override
-                    public void call(Subscriber<? super String> subscriber) {
-                        subscriber.onNext("Hello RxAndroid !!");
-                        subscriber.onCompleted();
-                    }
+                Observable.create(subscriber -> {
+                    subscriber.onNext("Hello RxAndroid !!");
+                    subscriber.onCompleted();
                 });
 
         // 스트림의 데이터가 발생할 때 마다 반복적으로 Subscriber 객체가 소모.
